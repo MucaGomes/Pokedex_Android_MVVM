@@ -1,0 +1,16 @@
+package com.example.pokedex.model
+
+data class Pokemon (
+    val number: Int,
+    val name: String,
+    val types: List<PokemonType>
+) {
+
+    val formattedName = name.capitalize()
+
+    val formatNumber = number.toString().padStart(3,'0')
+
+    val imageUrl = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/$formatNumber.png"
+}
+
+
