@@ -1,16 +1,52 @@
 package com.example.pokedex.model
 
+import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
+
 data class Pokemon (
-    val number: Int,
+    @Expose
+    @SerializedName("id")
+    val id: Int,
+
+    @Expose
+    @SerializedName("name")
     val name: String,
-    val types: List<PokemonType>
-) {
 
-    val formattedName = name.capitalize()
+    @Expose
+    @SerializedName("weight")
+    val weight: Int,
 
-    val formatNumber = number.toString().padStart(3,'0')
+    @Expose
+    @SerializedName("height")
+    val height: Int,
 
-    val imageUrl = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/$formatNumber.png"
-}
+    @Expose
+    @SerializedName("sprites")
+    val sprites: Sprites,
+
+    @Expose
+    @SerializedName("types")
+    var types: List<SloTypes>
+)
+
+data class SloTypes(
+    @Expose
+    @SerializedName("slot")
+    val slot: Long,
+    @Expose
+    @SerializedName("type")
+    val type: Species
+)
+
+data class Species (
+    @Expose
+    @SerializedName("name")
+    val name: String
+)
+
+data class Sprites (
+    @Expose
+    @SerializedName("front_default") val frontDefault: String?
+)
 
 

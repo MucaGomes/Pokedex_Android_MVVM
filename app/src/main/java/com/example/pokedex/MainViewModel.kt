@@ -6,9 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokedex.model.Pokemon
-import com.example.pokedex.model.PokemonApiResult
-import com.example.pokedex.model.PokemonResult
 import com.example.pokedex.model.PokemonsApi
+import com.example.pokedex.model.SloTypes
+import com.example.pokedex.model.Species
 import com.example.pokedex.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -24,12 +24,43 @@ class MainViewModel @Inject constructor(
 
     val myPokemonResponse: LiveData<PokemonsApi> = _PokemonResponse
 
+    private var _PokemonInfo = MutableLiveData<Response<Pokemon>>()
+
+    val myPokemonInfoResponse: LiveData<Response<Pokemon>> = _PokemonInfo
+
+    private var _PokeNameResponse = MutableLiveData<Pokemon>()
+
+    val myPokemonNameResponse: LiveData<Pokemon> = _PokeNameResponse
+
+
     fun listPokemon() {
         viewModelScope.launch {
             try {
                 val response = repository.listPokemon()
                 _PokemonResponse.value = response
             }catch (e: Exception) {
+                Log.d("Erro", e.message.toString())
+            }
+        }
+    }
+
+    fun getPokemonData(id: Int) {
+        viewModelScope.launch {
+            try {
+                val response = repository.dataPokemon(id)
+                _PokemonInfo.value = response
+            }catch (e: Exception){
+                Log.d("Erro", e.message.toString())
+            }
+        }
+    }
+
+    fun getPokemonNameData(name : String) {
+        viewModelScope.launch {
+            try {
+                val response = repository.dataNamePokemon(name)
+                _PokeNameResponse.value = response
+            }catch (e: Exception){
                 Log.d("Erro", e.message.toString())
             }
         }

@@ -2,12 +2,12 @@ package com.example.pokedex.screens
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.pokedex.MainViewModel
 import com.example.pokedex.adapter.HomeAdapter
 import com.example.pokedex.databinding.FragmentHomeBinding
@@ -26,19 +26,28 @@ class HomeFragment : Fragment() {
 
         mainViewModel.listPokemon()
 
-        // configuração do adapter]
-        val adapter = HomeAdapter()
-        binding.rvlPokemonsItens.layoutManager = LinearLayoutManager(context)
-        binding.rvlPokemonsItens.adapter = adapter
+
+        // configuração dos adapters
+        val homeAdapter = HomeAdapter()
+        binding.rvlPokemonsItens.layoutManager = GridLayoutManager(context, 2)
+        binding.rvlPokemonsItens.adapter = homeAdapter
         binding.rvlPokemonsItens.setHasFixedSize(true)
 
+        mainViewModel.myPokemonInfoResponse.observe(viewLifecycleOwner) { response ->
+            if (response != null) {
+                Log.d("Opa", response.body().toString())
+                homeAdapter.setInfoPoke(response.body()!!.types)
+            }
+        }
+
         mainViewModel.myPokemonResponse.observe(viewLifecycleOwner) { response ->
-            // Log.d("Requisicao", response.body().toString())
-            if(response != null) {
-                adapter.setItem(response.results)
+            if (response != null) {
+                Log.d("info: ", response.results.toString())
+                homeAdapter.setItem(response.results)
             }
         }
 
         return binding.root
     }
+
 }
