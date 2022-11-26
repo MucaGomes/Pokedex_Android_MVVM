@@ -13,7 +13,7 @@ interface PokemonService {
     suspend fun listPokemon(@Query("limit") limit: Int): PokemonsApi
 
     @GET("pokemon/{id}")
-    suspend fun getNumberPokemon(@Path("id") id: Int): Response<Pokemon>
+    suspend fun getNumberPokemon(@Path("id") id: Int): Pokemon
 
     @GET("pokemon/{name}")
     suspend fun getName(@Path("name") name: String): Pokemon

@@ -20,13 +20,16 @@ class MainViewModel @Inject constructor(
     val repository: Repository,
 ): ViewModel() {
 
+    var pokemonSelecionado: Pokemon? = null
+    var pokemonIdSelecionado: Int? = null
+
     private var _PokemonResponse = MutableLiveData<PokemonsApi>()
 
     val myPokemonResponse: LiveData<PokemonsApi> = _PokemonResponse
 
-    private var _PokemonInfo = MutableLiveData<Response<Pokemon>>()
+    private var _PokemonInfo = MutableLiveData<Pokemon>()
 
-    val myPokemonInfoResponse: LiveData<Response<Pokemon>> = _PokemonInfo
+    val myPokemonInfoResponse: LiveData<Pokemon> = _PokemonInfo
 
     private var _PokeNameResponse = MutableLiveData<Pokemon>()
 

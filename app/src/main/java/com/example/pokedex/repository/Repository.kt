@@ -13,7 +13,7 @@ class Repository {
         return RetrofitInstance.api.listPokemon(151)
     }
 
-    suspend fun dataPokemon(id: Int): Response<Pokemon> {
+    suspend fun dataPokemon(id: Int): Pokemon {
         return RetrofitInstance.api.getNumberPokemon(id)
     }
 
