@@ -13,7 +13,9 @@ import com.bumptech.glide.Glide
 import com.example.pokedex.databinding.CardAboutBinding
 import com.example.pokedex.model.Pokemon
 
-class AboutAdapter : RecyclerView.Adapter<AboutAdapter.AboutViewHolder>() {
+class AboutAdapter(
+    val itemClickListener: ItemClickListener
+) : RecyclerView.Adapter<AboutAdapter.AboutViewHolder>() {
 
     class AboutViewHolder(val binding: CardAboutBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -132,6 +134,11 @@ class AboutAdapter : RecyclerView.Adapter<AboutAdapter.AboutViewHolder>() {
                     )
                 )
             }
+        }
+
+        holder.binding.imgBack.setOnClickListener {
+            itemClickListener.onItemClickListenerNavigation()
+
         }
 
 

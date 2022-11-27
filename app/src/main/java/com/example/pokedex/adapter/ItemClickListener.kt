@@ -4,5 +4,6 @@ import com.example.pokedex.model.Pokemon
 
 interface ItemClickListener {
     fun onItemClickListener(pokemon: Pokemon?)
-    fun onItemClickListenerID(pokemon: Int)
+    fun onItemClickListenerID(id: Int)
+    fun onItemClickListenerNavigation()
 }

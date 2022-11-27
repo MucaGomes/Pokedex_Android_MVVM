@@ -41,6 +41,7 @@ class MainViewModel @Inject constructor(
             try {
                 val response = repository.listPokemon()
                 _PokemonResponse.value = response
+
             }catch (e: Exception) {
                 Log.d("Erro", e.message.toString())
             }
