@@ -85,7 +85,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/txtType2"
                 app:layout_constraintStart_toEndOf="@+id/txtType2"
                 app:layout_constraintTop_toTopOf="@+id/txtType2"
-                app:srcCompat="@drawable/pokemon" />
+                tools:srcCompat="@drawable/pokemon" />
 
             <ImageView
                 android:id="@+id/imgType1"
@@ -95,7 +95,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/txtType1"
                 app:layout_constraintStart_toEndOf="@+id/txtType1"
                 app:layout_constraintTop_toTopOf="@+id/txtType1"
-                app:srcCompat="@drawable/pokemon" />
+                tools:srcCompat="@drawable/pokemon" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View
@@ -424,7 +424,7 @@
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/mew" />
+            tools:srcCompat="@drawable/mew" />
 
         <ImageView
             android:id="@+id/imgBack"

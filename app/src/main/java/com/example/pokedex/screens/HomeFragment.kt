@@ -115,24 +115,6 @@ class HomeFragment : Fragment(), ItemClickListener {
             rotationBy(360f)
         }
     }
-
-
-    // em breve irei adicionar um sistema de mensagem de erro , para quando o
-    // pokemon digitado nao exista ele retorna essa mensagem
-    /*private fun errorSearch(homeAdapter: HomeAdapter) {
-        animatedLoading()
-
-        Handler().postDelayed({
-            binding.imgLoading.visibility = View.INVISIBLE
-            Toast.makeText(context, "Pokemon Não Encontrado :(", Toast.LENGTH_LONG).show()
-            binding.rvlPokemonsItens.visibility = View.VISIBLE
-            listPokemons(homeAdapter)
-        }, 1000)
-    }
-
-     */
-
-
     // função que faz com que as infos do item do primeiro adapter clicado seja mandado
     // para o proximo fragment
     override fun onItemClickListener(pokemon: Pokemon?) {
