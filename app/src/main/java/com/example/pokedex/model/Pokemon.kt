@@ -25,9 +25,30 @@ data class Pokemon (
     val sprites: Sprites,
 
     @Expose
+    @SerializedName("stats")
+    val stats: List<Stats>,
+
+    @Expose
     @SerializedName("types")
     var types: List<SloTypes>
 )
+
+data class Stats (
+    @Expose
+    @SerializedName("base_stat")
+    val baseStat: Int,
+
+    @Expose
+    @SerializedName("stat")
+    val stat: Stat,
+)
+
+data class Stat (
+    @Expose
+    @SerializedName("name")
+    val name: String
+
+        )
 
 data class SloTypes(
     @Expose

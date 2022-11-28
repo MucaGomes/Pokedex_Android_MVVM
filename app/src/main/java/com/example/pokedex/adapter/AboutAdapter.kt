@@ -49,7 +49,7 @@ class AboutAdapter(
 
         // utilizamos o Glide para fazer com que o link da imagem png se torne imagem na tela
         Glide.with(context)
-            .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png")
+            .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${data.id}.png")
             .into(holder.binding.igPokemon)
 
         // Aqui iremos trocar a cor do fundo das infos do pokemon de acordo com seu type
@@ -141,6 +141,26 @@ class AboutAdapter(
 
         }
 
+        // editando os stats do pokemon
+        holder.binding.txStatHp.text = data.stats[0].baseStat.toString()
+        holder.binding.txtStatAttack.text = data.stats[1].baseStat.toString()
+        holder.binding.txtStatDefense.text = data.stats[2].baseStat.toString()
+        holder.binding.txtStatSpecialAttk.text = data.stats[3].baseStat.toString()
+        holder.binding.txtStatSpecialDef.text = data.stats[4].baseStat.toString()
+        holder.binding.txtStatSpeed.text = data.stats[5].baseStat.toString()
+        holder.binding.txtStatWeight.text = data.weight.toString()
+
+        // ^ obs: os status vem em lista de 1 a 6 da api , quando esta no kotlin vira um arrayList
+        // por isso colocamos do 0 ao 6
+
+        // editando as progressBar de acordo com os stats
+        holder.binding.pbHp.setProgress(data.stats[0].baseStat)
+        holder.binding.pbAtk.setProgress(data.stats[1].baseStat)
+        holder.binding.pbDef.setProgress(data.stats[2].baseStat)
+        holder.binding.pbSpecialatk.setProgress(data.stats[3].baseStat)
+        holder.binding.pbSpecialDef.setProgress(data.stats[4].baseStat)
+        holder.binding.pbSpeed.setProgress(data.stats[5].baseStat)
+        holder.binding.pbWeight.setProgress(data.weight)
 
     }
 

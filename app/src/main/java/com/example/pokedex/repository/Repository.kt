@@ -10,7 +10,7 @@ import retrofit2.Response
 class Repository {
 
     suspend fun listPokemon(): PokemonsApi {
-        return RetrofitInstance.api.listPokemon(151)
+        return RetrofitInstance.api.listPokemon(1154)
     }
 
     suspend fun dataPokemon(id: Int): Pokemon {

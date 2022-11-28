@@ -40,7 +40,7 @@ class HomeAdapter(
 
         val context = holder.itemView.context
         Glide.with(context)
-            .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${position + 1}.png")
+            .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${position + 1}.png")
             .into(holder.binding.igPokemon)
 
         holder.itemView.setOnClickListener {

@@ -30,7 +30,7 @@ class InfoAdapter(
 
         val context = holder.itemView.context
         Glide.with(context).load(
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png")
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${data.id}.png")
             .into(holder.binding.igPokemon)
 
         holder.itemView.setOnClickListener {
