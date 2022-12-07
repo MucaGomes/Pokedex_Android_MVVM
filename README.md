@@ -18,13 +18,6 @@ Recursos Utilizados:
 - Glide
 
 ##
-:boat: Tela de Navegação, composta por alguns fragments e a Splash Screen
-
-<div >
-  <img height="500em" src="https://cdn.discordapp.com/attachments/993651741293805629/1046868949385613342/shot-2022-11-28_12-54-24.jpg"/>
-</div>
-
-##
 :open_hands: Tela de Boas-Vindas utilizando um método de OnBoarding que só pode ser acionado na primeira vez que o usuario abrir o aplicativo depois de instalado , depois disso apenas a Splash Screen permanece aparecendo para o usuário:
 
 <div >
