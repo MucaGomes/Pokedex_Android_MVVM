@@ -32,18 +32,14 @@ class HomeFragment : Fragment(), ItemClickListener {
 
         mainViewModel.listPokemon()
 
-        // tornamos essas duas variaveis nulas de novo para não ocorrer erro na hora que o fragment for criado
-        mainViewModel.pokemonIdSelecionado = null
-        mainViewModel.pokemonSelecionado = null
+        mainViewModel.pokemonIdSelected = null
+        mainViewModel.pokemonSelected = null
 
-        // configuração dos adapters
         val homeAdapter = HomeAdapter(this)
         binding.rvlPokemonsItens.layoutManager = GridLayoutManager(context, 2)
         binding.rvlPokemonsItens.adapter = homeAdapter
         binding.rvlPokemonsItens.setHasFixedSize(true)
 
-        // aqui faz com que seja lançado uma requisição de todos os pokemons para a api e já
-        // implementa eles na tela em forma de grade
         mainViewModel.myPokemonResponse.observe(viewLifecycleOwner) { response ->
             if (response != null) {
                 Log.d("info: ", response.results.toString())
@@ -51,9 +47,7 @@ class HomeFragment : Fragment(), ItemClickListener {
             }
         }
 
-        // função que é acionada quando o botão de pesquisar é clicado na pagina inicial
         binding.fbSearch.setOnClickListener {
-            // pegamos o texto digitado pelo usuario e tornamos ele em string para manipularmos
             val texto = binding.edtSearch.text.toString().lowercase()
 
             if (texto.isNotEmpty()) {
@@ -61,8 +55,6 @@ class HomeFragment : Fragment(), ItemClickListener {
 
                 animatedLoading()
 
-                // é criado outro adapter para substituir o primeiro em grade ( por isso usamos o
-                // visibility , assim que o adapter é invisivel , ele pode ser alterado por outro)
                 val infoAdapter = InfoAdapter(this)
                 binding.rvlSinglePokemon.layoutManager = GridLayoutManager(context, 2)
                 binding.rvlSinglePokemon.adapter = infoAdapter
@@ -75,9 +67,6 @@ class HomeFragment : Fragment(), ItemClickListener {
                     listPokemonForName(infoAdapter)
 
                 }, 1000)
-
-                // se nada for digitado , ao clicar no botao de pesquisa ele faz a
-                // requisição de todos os pokemons novamente
             } else if (texto.isEmpty()) {
                 binding.rvlSinglePokemon.visibility = View.INVISIBLE
                 binding.rvlPokemonsItens.visibility = View.INVISIBLE
@@ -115,25 +104,21 @@ class HomeFragment : Fragment(), ItemClickListener {
             rotationBy(360f)
         }
     }
-    // função que faz com que as infos do item do primeiro adapter clicado seja mandado
-    // para o proximo fragment
+
     override fun onItemClickListener(pokemon: Pokemon?) {
         if (binding.rvlSinglePokemon.visibility == View.VISIBLE) {
-            mainViewModel.pokemonSelecionado = pokemon
+            mainViewModel.pokemonSelected = pokemon
             findNavController().navigate(R.id.action_homeFragment_to_aboutFragment)
         }
     }
 
-    // função que faz com que as infos do item do primeiro adapter clicado seja mandado
-    // para o proximo fragment só que com o Id do pokemon selecionado
     override fun onItemClickListenerID(pokemon: Int) {
         if (binding.rvlPokemonsItens.visibility == View.VISIBLE) {
-            mainViewModel.pokemonIdSelecionado = pokemon
+            mainViewModel.pokemonIdSelected = pokemon
             findNavController().navigate(R.id.action_homeFragment_to_aboutFragment)
         }
     }
 
-    // função não utilizada pois não usamos botao de navegar alem dos itens do recyclerview
     override fun onItemClickListenerNavigation() {
         TODO("Not yet implemented")
     }

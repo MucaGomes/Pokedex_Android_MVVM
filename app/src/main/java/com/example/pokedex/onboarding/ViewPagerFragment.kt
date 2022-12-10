@@ -1,15 +1,13 @@
-package com.example.pokedex.oboarding
+package com.example.pokedex.onboarding
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.pokedex.R
-import com.example.pokedex.databinding.FragmentHomeBinding
 import com.example.pokedex.databinding.FragmentViewPagerBinding
-import com.example.pokedex.oboarding.screens.FirstFragment
-import com.example.pokedex.oboarding.screens.SecondFragment
+import com.example.pokedex.onboarding.onboarding_screens.FirstFragment
+import com.example.pokedex.onboarding.onboarding_screens.SecondFragment
 
 class ViewPagerFragment : Fragment() {
 
@@ -29,7 +27,7 @@ class ViewPagerFragment : Fragment() {
 
         val adapter = ViewPagerAdapter(
             fragmentList,
-            childFragmentManager,
+            requireActivity().supportFragmentManager,
             lifecycle
         )
 

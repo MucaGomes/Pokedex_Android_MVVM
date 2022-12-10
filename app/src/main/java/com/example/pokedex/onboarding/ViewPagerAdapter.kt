@@ -1,4 +1,4 @@
-package com.example.pokedex.oboarding
+package com.example.pokedex.onboarding
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

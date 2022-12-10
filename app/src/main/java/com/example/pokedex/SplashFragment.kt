@@ -15,10 +15,9 @@ class SplashFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         Handler().postDelayed({
-            if (onBoardingFinished()){
-                findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
-
-            }else {
+            if ((onBoardingFinished())) {
+                findNavController().navigate(R.id.action_splashFragment_to_newUserFragment)
+            }else{
                 findNavController().navigate(R.id.action_splashFragment_to_viewPagerFragment)
             }
         }, 3000)

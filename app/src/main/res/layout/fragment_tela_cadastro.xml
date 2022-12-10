@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:alpha="0.8"
     android:background="@drawable/login_background"
-    android:elevation="50dp">
+    android:elevation="50dp"
+    tools:context=".screens.formcadastro.FormCadastroFragment">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -31,6 +32,7 @@
                 android:layout_marginTop="32dp"
                 android:text="Cadastro"
                 android:textSize="40sp"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -39,16 +41,17 @@
                 android:id="@+id/linearLayout3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="45dp"
                 android:orientation="vertical"
                 android:padding="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4">
+                app:layout_constraintTop_toTopOf="parent">
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/txtInputEmail"
+                    android:id="@+id/txtInputEmailBox"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:boxBackgroundMode="outline"
@@ -58,6 +61,7 @@
                     app:boxCornerRadiusTopStart="16dp">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtInputEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Email"
@@ -65,7 +69,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/txtInputSenha"
+                    android:id="@+id/txtInputSenhaBox"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="8dp"
@@ -76,6 +80,7 @@
                     app:boxCornerRadiusTopStart="16dp">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtInputSenha"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Senha"
@@ -83,7 +88,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/txtInputRepetirSenha"
+                    android:id="@+id/txtInputRepetirSenhaBox"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="8dp"
@@ -94,6 +99,7 @@
                     app:boxCornerRadiusTopStart="16dp">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtInputRepetirSenha"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Senha"
@@ -115,10 +121,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
             <TextView
-                android:id="@+id/txtNavigateLogin"
+                android:id="@+id/txtNavigateRegisterToLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="24dp"
                 android:text="Já possui conta? Faça o Login"
                 android:textColor="#8BC34A"
                 app:layout_constraintBottom_toBottomOf="parent"

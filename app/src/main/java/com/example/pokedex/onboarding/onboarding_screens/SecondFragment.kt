@@ -1,4 +1,4 @@
-package com.example.pokedex.oboarding.screens
+package com.example.pokedex.onboarding.onboarding_screens
 
 import android.content.Context
 import android.os.Bundle
@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import androidx.viewpager.widget.ViewPager
 import com.example.pokedex.R
 import com.example.pokedex.databinding.FragmentSecondBinding
 
@@ -23,7 +22,7 @@ class SecondFragment : Fragment() {
         binding = FragmentSecondBinding.inflate(layoutInflater, container, false)
 
         binding.txtFinish.setOnClickListener {
-            findNavController().navigate(R.id.action_viewPagerFragment_to_homeFragment)
+            findNavController().navigate(R.id.action_viewPagerFragment_to_newUserFragment)
             onBoardingFinished()
         }
         return binding.root

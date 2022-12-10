@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:alpha="0.8"
     android:background="@drawable/login_background"
-    android:elevation="50dp">
+    android:elevation="50dp"
+    tools:context=".screens.formlogin.FormLoginFragment">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -47,7 +48,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView4">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/txtInputEmail"
+                    android:id="@+id/txtInputEmailBox"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:boxBackgroundMode="outline"
@@ -57,6 +58,7 @@
                     app:boxCornerRadiusTopStart="16dp">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtInputEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Email"
@@ -64,7 +66,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/txtInputSenha"
+                    android:id="@+id/txtInputSenhaBox"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="8dp"
@@ -75,6 +77,7 @@
                     app:boxCornerRadiusTopStart="16dp">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtInputSenha"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Senha"
@@ -83,7 +86,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/btCadastrar"
+                android:id="@+id/btLogar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -105,10 +108,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
             <TextView
-                android:id="@+id/txtNavigateLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:id="@+id/txtNavigateLoginToRegister"
+                android:layout_marginBottom="24dp"
                 android:text="Ainda sem Conta? Cadastre-se"
                 android:textColor="#8BC34A"
                 app:layout_constraintBottom_toBottomOf="parent"
