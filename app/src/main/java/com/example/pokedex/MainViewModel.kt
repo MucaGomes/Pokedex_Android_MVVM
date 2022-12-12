@@ -7,21 +7,18 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokedex.model.Pokemon
 import com.example.pokedex.model.PokemonsApi
-import com.example.pokedex.model.SloTypes
-import com.example.pokedex.model.Species
 import com.example.pokedex.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
     val repository: Repository,
-): ViewModel() {
+) : ViewModel() {
 
-    var pokemonSelecionado: Pokemon? = null
-    var pokemonIdSelecionado: Int? = null
+    var pokemonSelected: Pokemon? = null
+    var pokemonIdSelected: Int? = null
 
     private var _PokemonResponse = MutableLiveData<PokemonsApi>()
 
@@ -42,29 +39,29 @@ class MainViewModel @Inject constructor(
                 val response = repository.listPokemon()
                 _PokemonResponse.value = response
 
-            }catch (e: Exception) {
+            } catch (e: Exception) {
                 Log.d("Erro", e.message.toString())
             }
         }
     }
 
-    fun getPokemonData(id: Int) {
+    fun getPokemonIdData(id: Int) {
         viewModelScope.launch {
             try {
-                val response = repository.dataPokemon(id)
+                val response = repository.dataForIdPokemon(id)
                 _PokemonInfo.value = response
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 Log.d("Erro", e.message.toString())
             }
         }
     }
 
-    fun getPokemonNameData(name : String) {
+    fun getPokemonNameData(name: String) {
         viewModelScope.launch {
             try {
-                val response = repository.dataNamePokemon(name)
+                val response = repository.dataForNamePokemon(name)
                 _PokeNameResponse.value = response
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 Log.d("Erro", e.message.toString())
             }
         }

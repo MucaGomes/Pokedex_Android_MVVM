@@ -1,22 +1,18 @@
 package com.example.pokedex.screens
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedex.MainViewModel
 import com.example.pokedex.R
 import com.example.pokedex.adapter.AboutAdapter
-import com.example.pokedex.adapter.HomeAdapter
 import com.example.pokedex.adapter.ItemClickListener
 import com.example.pokedex.databinding.FragmentAboutBinding
-import com.example.pokedex.databinding.FragmentHomeBinding
 import com.example.pokedex.model.Pokemon
 
 class AboutFragment : Fragment(), ItemClickListener {
@@ -38,15 +34,15 @@ class AboutFragment : Fragment(), ItemClickListener {
         binding.rvlPokeInfo.adapter = aboutAdapter
         binding.rvlPokeInfo.setHasFixedSize(true)
 
-        carregarData(aboutAdapter)
+        loadData(aboutAdapter)
 
         return binding.root
     }
 
-    fun carregarData(aboutAdapter : AboutAdapter){
+    fun loadData(aboutAdapter : AboutAdapter){
 
-        pokemonSelecionado = mainViewModel.pokemonSelecionado
-        pokemonIdSelecionado = mainViewModel.pokemonIdSelecionado
+        pokemonSelecionado = mainViewModel.pokemonSelected
+        pokemonIdSelecionado = mainViewModel.pokemonIdSelected
 
         // faz uma verificação para que se o item clicado contém um pokemon por nome ou ID
         if(pokemonSelecionado != null && pokemonIdSelecionado == null){
@@ -57,7 +53,7 @@ class AboutFragment : Fragment(), ItemClickListener {
             }
         }
         if (pokemonIdSelecionado != null) {
-            mainViewModel.getPokemonData(pokemonIdSelecionado!!)
+            mainViewModel.getPokemonIdData(pokemonIdSelecionado!!)
             mainViewModel.myPokemonInfoResponse.observe(viewLifecycleOwner){ response ->
                 if (response != null) {
                     aboutAdapter.setItem(response)
