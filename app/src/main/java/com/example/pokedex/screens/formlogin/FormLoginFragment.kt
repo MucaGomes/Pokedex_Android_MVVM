@@ -43,7 +43,7 @@ class FormLoginFragment : Fragment() {
                 auth.signInWithEmailAndPassword(email,senha).addOnCompleteListener { autenticacao ->
                     if (autenticacao.isSuccessful) {
                         Toast.makeText(context,"Login feito com Sucesso!",Toast.LENGTH_SHORT).show()
-                        findNavController().navigate(R.id.action_formLoginFragment_to_homeFragment)
+                        navigateHome()
                     }
                 }.addOnFailureListener {
                     val snackbar = Snackbar.make(view,
@@ -57,6 +57,10 @@ class FormLoginFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    private fun navigateHome() {
+        findNavController().navigate(R.id.action_formLoginFragment_to_homeFragment)
     }
 
 }

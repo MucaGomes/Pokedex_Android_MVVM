@@ -47,6 +47,37 @@ class HomeFragment : Fragment(), ItemClickListener {
             }
         }
 
+        binding.fbPerfil.visibility = View.GONE
+
+        var isAllFabVisible = false
+
+        binding.fbOptions.shrink()
+
+        binding.fbOptions.setOnClickListener {
+            binding.fbOptions.animate().apply {
+                duration = 1000
+                rotationBy(360f)
+            }
+
+            if (!isAllFabVisible) {
+                binding.fbPerfil.visibility = View.VISIBLE
+                binding.fbOptions.extend()
+
+                isAllFabVisible = true
+            }else {
+                binding.fbPerfil.visibility = View.GONE
+
+                binding.fbOptions.shrink()
+
+                isAllFabVisible = false
+            }
+
+        }
+
+        binding.fbPerfil.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_userPerfilFragment)
+        }
+
         binding.fbSearch.setOnClickListener {
             val texto = binding.edtSearch.text.toString().lowercase()
 
