@@ -17,6 +17,7 @@ import com.example.pokedex.adapter.InfoAdapter
 import com.example.pokedex.adapter.ItemClickListener
 import com.example.pokedex.databinding.FragmentHomeBinding
 import com.example.pokedex.model.Pokemon
+import com.example.pokedex.screens.perfil.UserPerfilFragment
 
 class HomeFragment : Fragment(), ItemClickListener {
 
@@ -29,6 +30,7 @@ class HomeFragment : Fragment(), ItemClickListener {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
+
 
         mainViewModel.listPokemon()
 
@@ -75,7 +77,9 @@ class HomeFragment : Fragment(), ItemClickListener {
         }
 
         binding.fbPerfil.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_userPerfilFragment)
+            findNavController().navigate(R.id.action_homeFragment_to_userPerfilFragment2)
+
+
         }
 
         binding.fbSearch.setOnClickListener {

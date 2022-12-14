@@ -11,7 +11,7 @@ interface PokemonService {
     suspend fun listPokemon(@Query("limit") limit: Int): PokemonsApi
 
     @GET("pokemon/{id}")
-    suspend fun getDataforIdPokemon(@Path("id") id: Int): Pokemon
+    suspend fun getDataforIdPokemon(@Path("id") id: Int?): Pokemon
 
     @GET("pokemon/{name}")
     suspend fun getDataforNamePokemon(@Path("name") name: String): Pokemon

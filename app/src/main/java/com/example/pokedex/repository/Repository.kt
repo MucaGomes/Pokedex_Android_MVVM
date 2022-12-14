@@ -11,7 +11,7 @@ class Repository {
         return RetrofitInstance.api.listPokemon(200)
     }
 
-    suspend fun dataForIdPokemon(id: Int): Pokemon {
+    suspend fun dataForIdPokemon(id: Int?): Pokemon {
         return RetrofitInstance.api.getDataforIdPokemon(id)
     }
 

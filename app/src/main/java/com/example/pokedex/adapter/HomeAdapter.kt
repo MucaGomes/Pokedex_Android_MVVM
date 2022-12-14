@@ -1,16 +1,24 @@
 package com.example.pokedex.adapter
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.pokedex.MainViewModel
+import com.example.pokedex.R
 import com.example.pokedex.databinding.CardHomeBinding
 import com.example.pokedex.model.*
+import com.example.pokedex.screens.perfil.UserPerfilFragment
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class HomeAdapter(
     val itemClickListener: ItemClickListener
 ) : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
+
+    private val db = FirebaseFirestore.getInstance()
 
     class HomeViewHolder(val binding: CardHomeBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -47,6 +55,22 @@ class HomeAdapter(
             itemClickListener.onItemClickListenerID(position + 1)
         }
 
+        holder.binding.imgFavorite.setOnClickListener {
+            holder.binding.imgFavorite.setImageResource(R.drawable.ic_baseline_favorite_24)
+
+            val idFavorite = hashMapOf(
+                "favorito" to position + 1
+            )
+
+            val usuarioId = FirebaseAuth.getInstance().currentUser!!.uid
+
+            db.collection("Favorites").document(usuarioId).set(idFavorite)
+                .addOnCompleteListener {
+                    Log.d("db", "Sucesso ao salvar pokemon favorito")
+                }.addOnFailureListener {
+
+                }
+        }
     }
 
     override fun getItemCount(): Int {
