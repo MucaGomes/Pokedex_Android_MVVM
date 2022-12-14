@@ -17,8 +17,10 @@ class MainViewModel @Inject constructor(
     val repository: Repository,
 ) : ViewModel() {
 
+    var nameUser: String = ""
     var pokemonSelected: Pokemon? = null
     var pokemonIdSelected: Int? = null
+    var pokemonIdFavoriteSelected: Int? = null
 
     private var _PokemonResponse = MutableLiveData<PokemonsApi>()
 
@@ -45,7 +47,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun getPokemonIdData(id: Int) {
+    fun getPokemonIdData(id: Int?) {
         viewModelScope.launch {
             try {
                 val response = repository.dataForIdPokemon(id)

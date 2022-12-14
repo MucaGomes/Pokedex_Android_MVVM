@@ -56,6 +56,10 @@ class FormLoginFragment : Fragment() {
             }
         }
 
+        binding.txtForgotPassword.setOnClickListener {
+            findNavController().navigate(R.id.action_formLoginFragment_to_resetPassowrdUserFragment)
+        }
+
         return binding.root
     }
 

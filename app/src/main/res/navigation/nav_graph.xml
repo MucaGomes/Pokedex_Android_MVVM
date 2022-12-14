@@ -16,8 +16,8 @@
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out" />
         <action
-            android:id="@+id/action_homeFragment_to_userPerfilFragment"
-            app:destination="@id/userPerfilFragment"
+            android:id="@+id/action_homeFragment_to_userPerfilFragment2"
+            app:destination="@id/userPerfilFragment2"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -104,6 +104,10 @@
             app:destination="@id/homeFragment"
             app:popUpTo="@id/formLoginFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_formLoginFragment_to_resetPassowrdUserFragment"
+            app:destination="@id/resetPassowrdUserFragment"
+            app:popUpTo="@id/formLoginFragment" />
     </fragment>
     <fragment
         android:id="@+id/newUserFragment"
@@ -116,10 +120,36 @@
         <action
             android:id="@+id/action_newUserFragment_to_formCadastroFragment"
             app:destination="@id/formCadastroFragment" />
+        <action
+            android:id="@+id/action_newUserFragment_to_userPerfilFragment2"
+            app:destination="@id/userPerfilFragment2"
+            app:popUpTo="@id/newUserFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
-        android:id="@+id/userPerfilFragment"
+        android:id="@+id/userPerfilFragment2"
         android:name="com.example.pokedex.screens.perfil.UserPerfilFragment"
         android:label="fragment_user_perfil"
-        tools:layout="@layout/fragment_user_perfil" />
+        tools:layout="@layout/fragment_user_perfil" >
+        <action
+            android:id="@+id/action_userPerfilFragment2_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/userPerfilFragment2"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_userPerfilFragment2_to_newUserFragment"
+            app:destination="@id/newUserFragment"
+            app:popUpTo="@id/userPerfilFragment2"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/resetPassowrdUserFragment"
+        android:name="com.example.pokedex.screens.perfil.ResetPassowrdUserFragment"
+        android:label="ResetPassowrdUserFragment" >
+        <action
+            android:id="@+id/action_resetPassowrdUserFragment_to_formLoginFragment"
+            app:destination="@id/formLoginFragment"
+            app:popUpTo="@id/resetPassowrdUserFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>
