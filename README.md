@@ -1,6 +1,4 @@
-# :warning: Pokedex Android MVVM - Kotlin- PokeApi - Retrofit - Hilt
-( EM ANDAMENTO )
-
+# :heavy_check_mark: Pokedex Android MVVM - Kotlin- PokeApi - Retrofit - Hilt
 
 Aplicativo para afundar conhecimento em arquitetura mvvm e requisicões de Api's , Pokedex feita com informações fornecidas pela api pública: https://pokeapi.co/ e transformando os dados recebidos em objetos e dados para utilizar com Kotlin segue abaixo algumas fases do projeto.
 
@@ -20,4 +18,27 @@ Autenticação de Usuários (Registro e Login) Fora feitos com Firebase e Utiliz
 - [FireStore](https://firebase.google.com/products/firestore?hl=pt-br&gclid=Cj0KCQiA14WdBhD8ARIsANao07iLCqXJMWbE3HIU8Z7TKEc4JUGQLtTL5C0VTZuQrNKX9IOiablVkT0aAuT9EALw_wcB&gclsrc=aw.ds)
 
 ##
+
+Preview Oboarding (Welcome Screen):
+<div >
+  <img height="350em" src="https://cdn.discordapp.com/attachments/993651741293805629/1046866142674813008/oB1.png"/>
+  <img height="350em" src="https://cdn.discordapp.com/attachments/993651741293805629/1046866143035527208/Ob2.png"/>
+</div>
+
+##
+
+Tela de Novo Usuário (Login e Cadastro):
+<div >
+  <img height="350em" src="https://cdn.discordapp.com/attachments/993651741293805629/1054772376992227458/Screenshot_20221220-114815.png"/>
+  <img height="350em" src="https://cdn.discordapp.com/attachments/993651741293805629/1054772376656687204/Screenshot_20221220-114818.png"/>
+ <img height="350em" src="https://cdn.discordapp.com/attachments/993651741293805629/1054772375964622908/Screenshot_20221220-114823.png"/>
+</div>
+
+##
+
+Tela de Inicio (Lista de Pokemons, Pesquisa Individual):
+<div >
+  <img height="350em" src="https://cdn.discordapp.com/attachments/993651741293805629/1054773096852230194/Screenshot_20221220-115130.png"/>
+  <img height="350em" src="https://cdn.discordapp.com/attachments/993651741293805629/1054773458552225823/Screenshot_20221220-115301.png"/>
+</div>
 
