@@ -1,6 +1,6 @@
 # :heavy_check_mark: Pokedex Android MVVM - Kotlin- PokeApi - Retrofit - Hilt
 
-Aplicativo para afundar conhecimento em arquitetura mvvm e requisicões de Api's , Pokedex feita com informações fornecidas pela api pública: https://pokeapi.co/ e transformando os dados recebidos em objetos e dados para utilizar com Kotlin segue abaixo algumas fases do projeto.
+Aplicativo para aprofundar conhecimento em arquitetura mvvm e requisições de Api's , Pokedex feita com informações fornecidas pela api pública: https://pokeapi.co/ e transformando os dados recebidos em objetos e dados para utilizar com Kotlin segue abaixo algumas fases do projeto.
 
 :clapper: [Video Apresentando O app Completo](https://www.linkedin.com/posts/samuel-gomes-santos_authentication-login-pokeapi-activity-7009638276068192256--Wf8?utm_source=share&utm_medium=member_desktop)
 
