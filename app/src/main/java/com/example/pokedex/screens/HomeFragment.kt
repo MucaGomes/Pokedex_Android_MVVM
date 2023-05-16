@@ -17,7 +17,6 @@ import com.example.pokedex.adapter.InfoAdapter
 import com.example.pokedex.adapter.ItemClickListener
 import com.example.pokedex.databinding.FragmentHomeBinding
 import com.example.pokedex.model.Pokemon
-import com.example.pokedex.screens.perfil.UserPerfilFragment
 
 class HomeFragment : Fragment(), ItemClickListener {
 
@@ -31,57 +30,20 @@ class HomeFragment : Fragment(), ItemClickListener {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
 
-
         mainViewModel.listPokemon()
-
         mainViewModel.pokemonIdSelected = null
         mainViewModel.pokemonSelected = null
 
-        val homeAdapter = HomeAdapter(this)
-        binding.rvlPokemonsItens.layoutManager = GridLayoutManager(context, 2)
-        binding.rvlPokemonsItens.adapter = homeAdapter
-        binding.rvlPokemonsItens.setHasFixedSize(true)
+        val homeAdapter = setListPokemonAdapter()
+        loadListPokemons(homeAdapter)
 
-        mainViewModel.myPokemonResponse.observe(viewLifecycleOwner) { response ->
-            if (response != null) {
-                Log.d("info: ", response.results.toString())
-                homeAdapter.setItem(response.results)
-            }
-        }
+        setupFabButtons()
+        setupFunctionSearchPokemon(homeAdapter)
 
-        binding.fbPerfil.visibility = View.GONE
+        return binding.root
+    }
 
-        var isAllFabVisible = false
-
-        binding.fbOptions.shrink()
-
-        binding.fbOptions.setOnClickListener {
-            binding.fbOptions.animate().apply {
-                duration = 1000
-                rotationBy(360f)
-            }
-
-            if (!isAllFabVisible) {
-                binding.fbPerfil.visibility = View.VISIBLE
-                binding.fbOptions.extend()
-
-                isAllFabVisible = true
-            }else {
-                binding.fbPerfil.visibility = View.GONE
-
-                binding.fbOptions.shrink()
-
-                isAllFabVisible = false
-            }
-
-        }
-
-        binding.fbPerfil.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_userPerfilFragment2)
-
-
-        }
-
+    private fun setupFunctionSearchPokemon(homeAdapter: HomeAdapter) {
         binding.fbSearch.setOnClickListener {
             val texto = binding.edtSearch.text.toString().lowercase()
 
@@ -99,7 +61,7 @@ class HomeFragment : Fragment(), ItemClickListener {
                     binding.imgLoading.visibility = View.INVISIBLE
                     binding.rvlSinglePokemon.visibility = View.VISIBLE
                     mainViewModel.getPokemonNameData(texto)
-                    listPokemonForName(infoAdapter)
+                    showPokemonForName(infoAdapter)
 
                 }, 1000)
             } else if (texto.isEmpty()) {
@@ -118,11 +80,58 @@ class HomeFragment : Fragment(), ItemClickListener {
                 }, 1000)
             }
         }
-
-        return binding.root
     }
 
-    private fun listPokemonForName(infoAdapter: InfoAdapter) {
+    private fun setupFabButtons() {
+        binding.fbPerfil.visibility = View.GONE
+
+        var isAllFabVisible = false
+
+        binding.fbOptions.shrink()
+
+        binding.fbOptions.setOnClickListener {
+            binding.fbOptions.animate().apply {
+                duration = 1000
+                rotationBy(360f)
+            }
+
+            if (!isAllFabVisible) {
+                binding.fbPerfil.visibility = View.VISIBLE
+                binding.fbOptions.extend()
+
+                isAllFabVisible = true
+            } else {
+                binding.fbPerfil.visibility = View.GONE
+
+                binding.fbOptions.shrink()
+
+                isAllFabVisible = false
+            }
+        }
+
+        binding.fbPerfil.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_userPerfilFragment2)
+        }
+    }
+
+    private fun loadListPokemons(homeAdapter: HomeAdapter) {
+        mainViewModel.myPokemonResponse.observe(viewLifecycleOwner) { response ->
+            if (response != null) {
+                Log.d("info: ", response.results.toString())
+                homeAdapter.setItem(response.results)
+            }
+        }
+    }
+
+    private fun setListPokemonAdapter(): HomeAdapter {
+        val homeAdapter = HomeAdapter(this)
+        binding.rvlPokemonsItens.layoutManager = GridLayoutManager(context, 2)
+        binding.rvlPokemonsItens.adapter = homeAdapter
+        binding.rvlPokemonsItens.setHasFixedSize(true)
+        return homeAdapter
+    }
+
+    private fun showPokemonForName(infoAdapter: InfoAdapter) {
         mainViewModel.myPokemonNameResponse.observe(viewLifecycleOwner) { response ->
             if (response != null) {
                 Log.d("single: ", response.toString())

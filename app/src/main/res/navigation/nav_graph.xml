@@ -33,6 +33,11 @@
             app:exitAnim="@android:anim/fade_out"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_aboutFragment_to_userPerfilFragment2"
+            app:destination="@id/userPerfilFragment2"
+            app:popUpTo="@id/aboutFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/firstFragment"
@@ -139,6 +144,11 @@
         <action
             android:id="@+id/action_userPerfilFragment2_to_newUserFragment"
             app:destination="@id/newUserFragment"
+            app:popUpTo="@id/userPerfilFragment2"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_userPerfilFragment2_to_aboutFragment"
+            app:destination="@id/aboutFragment"
             app:popUpTo="@id/userPerfilFragment2"
             app:popUpToInclusive="true" />
     </fragment>

@@ -19,8 +19,8 @@ class AboutFragment : Fragment(), ItemClickListener {
 
     private val mainViewModel: MainViewModel by activityViewModels()
     private lateinit var binding: FragmentAboutBinding
-    var pokemonSelecionado: Pokemon? = null
-    var pokemonIdSelecionado: Int? = null
+    var pokemonSelected: Pokemon? = null
+    var pokemonIdSelected: Int? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,31 +29,36 @@ class AboutFragment : Fragment(), ItemClickListener {
         // Inflate the layout for this fragment
         binding = FragmentAboutBinding.inflate(layoutInflater, container, false)
 
-        val aboutAdapter = AboutAdapter(this)
-        binding.rvlPokeInfo.layoutManager = LinearLayoutManager(context)
-        binding.rvlPokeInfo.adapter = aboutAdapter
-        binding.rvlPokeInfo.setHasFixedSize(true)
+        val aboutAdapter = setAboutAdapter()
 
         loadData(aboutAdapter)
 
         return binding.root
     }
 
+    private fun setAboutAdapter(): AboutAdapter {
+        val aboutAdapter = AboutAdapter(this)
+        binding.rvlPokeInfo.layoutManager = LinearLayoutManager(context)
+        binding.rvlPokeInfo.adapter = aboutAdapter
+        binding.rvlPokeInfo.setHasFixedSize(true)
+        return aboutAdapter
+    }
+
     fun loadData(aboutAdapter : AboutAdapter){
 
-        pokemonSelecionado = mainViewModel.pokemonSelected
-        pokemonIdSelecionado = mainViewModel.pokemonIdSelected
+        pokemonSelected = mainViewModel.pokemonSelected
+        pokemonIdSelected = mainViewModel.pokemonIdSelected
 
         // faz uma verificação para que se o item clicado contém um pokemon por nome ou ID
-        if(pokemonSelecionado != null && pokemonIdSelecionado == null){
+        if(pokemonSelected != null && pokemonIdSelected == null){
             mainViewModel.myPokemonNameResponse.observe(viewLifecycleOwner){ response ->
                 if (response != null) {
                     aboutAdapter.setItem(response)
                 }
             }
         }
-        if (pokemonIdSelecionado != null) {
-            mainViewModel.getPokemonIdData(pokemonIdSelecionado!!)
+        if (pokemonIdSelected != null) {
+            mainViewModel.getPokemonIdData(pokemonIdSelected!!)
             mainViewModel.myPokemonInfoResponse.observe(viewLifecycleOwner){ response ->
                 if (response != null) {
                     aboutAdapter.setItem(response)

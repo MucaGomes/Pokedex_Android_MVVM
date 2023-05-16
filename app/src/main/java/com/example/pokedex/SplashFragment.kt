@@ -19,6 +19,14 @@ class SplashFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        validateCurrentUser()
+
+        return inflater.inflate(R.layout.fragment_splash, container, false)
+
+    }
+
+    private fun validateCurrentUser() {
         if (usuarioAtual == null) {
             Handler().postDelayed({
                 if ((onBoardingFinished())) {
@@ -28,11 +36,9 @@ class SplashFragment : Fragment() {
                 }
             }, 3000)
         }
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_splash, container, false)
-
     }
-    private fun onBoardingFinished(): Boolean{
+
+    private fun onBoardingFinished(): Boolean {
         val sharedPref = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
         return sharedPref.getBoolean("Finished", false)
     }
@@ -40,7 +46,7 @@ class SplashFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        if (usuarioAtual != null){
+        if (usuarioAtual != null) {
             navigateHome()
         }
     }
