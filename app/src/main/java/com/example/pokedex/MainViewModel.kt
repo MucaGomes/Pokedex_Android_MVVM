@@ -20,7 +20,7 @@ class MainViewModel @Inject constructor(
     var nameUser: String = ""
     var pokemonSelected: Pokemon? = null
     var pokemonIdSelected: Int? = null
-    var pokemonIdFavoriteSelected: Int? = null
+    var pokemonIdFavorite: String? = null
 
     private var _PokemonResponse = MutableLiveData<PokemonsApi>()
 
@@ -34,7 +34,6 @@ class MainViewModel @Inject constructor(
 
     val myPokemonNameResponse: LiveData<Pokemon> = _PokeNameResponse
 
-
     fun listPokemon() {
         viewModelScope.launch {
             try {
@@ -42,7 +41,7 @@ class MainViewModel @Inject constructor(
                 _PokemonResponse.value = response
 
             } catch (e: Exception) {
-                Log.d("Erro", e.message.toString())
+                Log.d("Erro: ", e.message.toString())
             }
         }
     }

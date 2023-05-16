@@ -30,13 +30,18 @@ class FormCadastroFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         binding = FragmentTelaCadastroBinding.inflate(layoutInflater, container, false)
+
+        setupButtonRegister()
 
         binding.txtNavigateRegisterToLogin.setOnClickListener {
             findNavController().navigate(R.id.action_formCadastroFragment_to_formLoginFragment)
         }
 
+        return binding.root
+    }
+
+    private fun setupButtonRegister() {
         binding.btCadastrar.setOnClickListener {
             val name = binding.txtInputName.text.toString()
             val email = binding.txtInputEmail.text.toString()
@@ -96,6 +101,5 @@ class FormCadastroFragment : Fragment() {
                 snackbar.show()
             }
         }
-        return binding.root
     }
 }
