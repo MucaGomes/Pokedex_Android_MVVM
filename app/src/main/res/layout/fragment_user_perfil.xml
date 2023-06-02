@@ -44,22 +44,25 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvlFavorite"
-        android:layout_width="0dp"
-        android:layout_height="280dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:animateLayoutChanges="false"
         app:layout_constraintBottom_toTopOf="@+id/btLogout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPokeFav"
+        tools:itemCount="1"
         tools:listitem="@layout/card_home" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/txtPokeFav"
         android:layout_width="wrap_content"
         android:layout_height="19dp"
         android:layout_marginBottom="8dp"
-        android:text="Pokemons Favoritos:"
+        android:text="Pokemon Favorito:"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/rvlFavorite"
@@ -88,15 +91,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view2" />
 
-    <TextView
-        android:id="@+id/idPoke"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="157dp"
-        android:text="Id"
-        app:layout_constraintBottom_toBottomOf="@+id/textView8"
-        app:layout_constraintStart_toStartOf="@+id/textView8"
-        app:layout_constraintTop_toTopOf="@+id/textView8" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

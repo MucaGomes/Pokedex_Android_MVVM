@@ -4,10 +4,11 @@ import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.collection.arrayMapOf
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -16,9 +17,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedex.MainViewModel
 import com.example.pokedex.R
 import com.example.pokedex.adapter.FavoritePokemonAdapter
-import com.example.pokedex.adapter.InfoAdapter
 import com.example.pokedex.adapter.ItemClickListener
 import com.example.pokedex.databinding.FragmentUserPerfilBinding
+import com.example.pokedex.model.FavoritePokemon
 import com.example.pokedex.model.Pokemon
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
@@ -45,17 +46,17 @@ class UserPerfilFragment : Fragment(), ItemClickListener {
 
     private fun showIdFavoritePokemon() {
         val favoriteAdapter = FavoritePokemonAdapter(this)
-        binding.rvlFavorite.layoutManager = GridLayoutManager(context,2)
+        binding.rvlFavorite.layoutManager = LinearLayoutManager(context)
         binding.rvlFavorite.adapter = favoriteAdapter
         binding.rvlFavorite.setHasFixedSize(true)
 
-        val documentRefFav = db.collection("FavoritePokemons").document(usuarioId)
+        val documentRefFav = db.collection("FavoritePokemon").document(usuarioId)
 
         documentRefFav.addSnapshotListener(MetadataChanges.INCLUDE) { snapshot, e ->
             if (snapshot != null) {
 
-                val id = snapshot.get("pokemonsLiked").toString()
-                Log.d(TAG,id)
+                val id = snapshot.get("pokemonLiked").toString()
+                Log.d(TAG, id)
                 mainViewModel.getPokemonNameData(id)
                 parentFragment?.viewLifecycleOwner?.let {
                     mainViewModel.myPokemonNameResponse.observe(viewLifecycleOwner) { response ->
@@ -64,7 +65,7 @@ class UserPerfilFragment : Fragment(), ItemClickListener {
                         }
                     }
                 }
-            }else {
+            } else {
                 Log.e(TAG, "Erro ao carregar favoritos")
             }
         }
@@ -84,11 +85,11 @@ class UserPerfilFragment : Fragment(), ItemClickListener {
     }
 
     private fun sendIdPokemonForAboutFragment() {
-        val documentRefFav = db.collection("FavoritePokemons").document(usuarioId)
+        val documentRefFav = db.collection("FavoritePokemon").document(usuarioId)
 
         documentRefFav.addSnapshotListener(MetadataChanges.INCLUDE) { snapshot, e ->
             if (snapshot != null) {
-                val idSelected = snapshot.getLong("pokemonsLiked").toString()
+                val idSelected = snapshot.getLong("pokemonLiked").toString()
 
                 lifecycleScope.launchWhenResumed {
                     mainViewModel.pokemonIdSelected = idSelected.toInt()

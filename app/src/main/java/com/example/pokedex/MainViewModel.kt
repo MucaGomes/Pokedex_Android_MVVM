@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    val repository: Repository,
+    val repository: Repository
 ) : ViewModel() {
 
     var nameUser: String = ""
